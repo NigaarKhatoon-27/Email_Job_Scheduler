@@ -11,10 +11,6 @@ export const api = axios.create({
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401 && !window.location.pathname.includes('/login')) {
-      // Clear user session if 401 received
-      window.location.href = '/login?session_expired=true';
-    }
     return Promise.reject(error);
   }
 );

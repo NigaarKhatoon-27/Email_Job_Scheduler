@@ -37,14 +37,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       const res = await api.post('/auth/demo');
       setUser(res.data.user);
-      window.location.href = '/dashboard';
     } finally {
       setLoading(false);
     }
   };
 
   const loginGoogle = () => {
-    window.location.href = '/api/auth/google';
+    const backendUrl = import.meta.env.VITE_API_BASE_URL || '/api';
+    window.location.href = `${backendUrl}/auth/google`;
   };
 
   const logout = async () => {
